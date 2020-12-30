@@ -67,7 +67,13 @@ public class DrawFunctor {
             Class canvasClazz;
             Method callDrawGLFunctionMethod;
 
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+                //hidden API blacklist denies access, must use ADB or target old sdk
+                canvasClazz = Class.forName("android.graphics.RecordingCanvas");
+                callDrawGLFunctionMethod = canvasClazz.getMethod("callDrawGLFunction2", long.class);
+                callDrawGLFunctionMethod.setAccessible(true);
+                callDrawGLFunctionMethod.invoke(canvas, mNativeFunctor);
+            } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
                 canvasClazz = Class.forName("android.view.DisplayListCanvas");
                 callDrawGLFunctionMethod = canvasClazz.getMethod("callDrawGLFunction2", long.class);
                 callDrawGLFunctionMethod.setAccessible(true);
