@@ -225,6 +225,9 @@ public class ScreenBlurRenderer implements IRenderer<DrawFunctor.GLInfo> {
         GLES20.glDisable(GLES20.GL_SCISSOR_TEST);
         GLES20.glEnable(GLES20.GL_BLEND);   // enable Alpha Test
 
+        //this appears to be left over after drawing a frame, and leaving this line in causes GL_INVALID_OPERATION
+        GLES20.glBindBuffer(GLES20.GL_ELEMENT_ARRAY_BUFFER, 0);
+
         if (!isChildRedraw) {
             mDisplayTexture = TextureCache.getInstance().getTexture(mWidth, mHeight);
         }
