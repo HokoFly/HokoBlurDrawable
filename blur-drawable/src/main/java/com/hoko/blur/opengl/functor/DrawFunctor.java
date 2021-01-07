@@ -64,7 +64,7 @@ public class DrawFunctor {
         }
 
         try {
-            Class canvasClazz;
+            Class<?> canvasClazz;
             Method callDrawGLFunctionMethod;
 
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
@@ -144,14 +144,14 @@ public class DrawFunctor {
      * The blur location on the screen
      */
     public static class GLInfo {
-        int clipLeft;
-        int clipTop;
-        int clipRight;
-        int clipBottom;
-        int viewportWidth;
-        int viewportHeight;
-        float[] transform;
-        boolean isLayer;
+        public int clipLeft;
+        public int clipTop;
+        public int clipRight;
+        public int clipBottom;
+        public int viewportWidth;
+        public int viewportHeight;
+        public float[] transform;
+        public boolean isLayer;
 
         public GLInfo() {
             this.transform = new float[16];

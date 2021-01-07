@@ -13,7 +13,7 @@ public class FrameBufferCache {
         private static final FrameBufferCache INSTANCE = new FrameBufferCache();
     }
 
-    private CachePool<Object, IFrameBuffer> mCache;
+    private final CachePool<Object, IFrameBuffer> mCache;
 
     private volatile IFrameBuffer sDisplayFrameBuffer;
 

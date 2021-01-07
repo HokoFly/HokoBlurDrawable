@@ -3,18 +3,18 @@
 //
 
 #include "ScopeJEnv.h"
-#include <stddef.h>
+#include <cstddef>
 #include <unistd.h>
 #include <pthread.h>
 
 extern pthread_key_t g_env_key;
 
 ScopeJEnv::ScopeJEnv(JavaVM *jvm, jint _capacity)
-        : vm_(jvm), env_(NULL), we_attach_(false), status_(0) {
+        : vm_(jvm), env_(nullptr), we_attach_(false), status_(0) {
     do {
         env_ = (JNIEnv *) pthread_getspecific(g_env_key);
 
-        if (NULL != env_) {
+        if (nullptr != env_) {
             break;
         }
 
@@ -25,7 +25,7 @@ ScopeJEnv::ScopeJEnv(JavaVM *jvm, jint _capacity)
         }
 
         JavaVMAttachArgs args;
-        args.group = NULL;
+        args.group = nullptr;
         args.name = "default";
         args.version = JNI_VERSION_1_6;
 
@@ -39,7 +39,7 @@ ScopeJEnv::ScopeJEnv(JavaVM *jvm, jint _capacity)
             we_attach_ = true;
             pthread_setspecific(g_env_key, env_);
         } else {
-            env_ = NULL;
+            env_ = nullptr;
             return;
         }
     } while (false);
@@ -48,8 +48,8 @@ ScopeJEnv::ScopeJEnv(JavaVM *jvm, jint _capacity)
 }
 
 ScopeJEnv::~ScopeJEnv() {
-    if (NULL != env_) {
-        env_->PopLocalFrame(NULL);
+    if (nullptr != env_) {
+        env_->PopLocalFrame(nullptr);
     }
 }
 

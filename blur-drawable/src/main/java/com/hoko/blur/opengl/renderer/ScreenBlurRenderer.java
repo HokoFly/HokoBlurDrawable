@@ -1,4 +1,4 @@
-package com.hoko.blur.opengl.functor;
+package com.hoko.blur.opengl.renderer;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
@@ -14,6 +14,7 @@ import com.hoko.blur.api.IRenderer;
 import com.hoko.blur.api.ITexture;
 import com.hoko.blur.opengl.cache.FrameBufferCache;
 import com.hoko.blur.opengl.cache.TextureCache;
+import com.hoko.blur.opengl.functor.DrawFunctor;
 import com.hoko.blur.opengl.program.ProgramFactory;
 import com.hoko.blur.util.ColorUtil;
 import com.hoko.blur.util.Preconditions;
@@ -43,21 +44,21 @@ public class ScreenBlurRenderer implements IRenderer<DrawFunctor.GLInfo> {
     private static final int COORDS_PER_VERTEX = 3;
     private static final int VERTEX_STRIDE = COORDS_PER_VERTEX * 4;
 
-    private static final float squareCoords[] = {
+    private static final float[] squareCoords = {
             0.0F, 0.0F, 0.0F, // top left
             1.0F, 0.0F, 0.0F, // bottom left
             0.0F, 1.0F, 0.0F, // bottom right
             1.0F, 1.0F, 0.0F, // top right
     };
 
-    private static final float mTexHorizontalCoords[] = {
+    private static final float[] mTexHorizontalCoords = {
             0.0f, 0.0f,
             1.0f, 0.0f,
             0.0f, 1.0f,
             1.0f, 1.0f
     };
 
-    private static final short drawOrder[] = {0, 1, 2, 2, 3, 1};
+    private static final short[] drawOrder = {0, 1, 2, 2, 3, 1};
 
 
     private int mRadius;
@@ -81,17 +82,17 @@ public class ScreenBlurRenderer implements IRenderer<DrawFunctor.GLInfo> {
     private int mScaleW;
     private int mScaleH;
 
-    private float[] mModelMatrix = new float[16];
-    private float[] mViewMatrix = new float[16];
-    private float[] mProjMatrix = new float[16];
-    private float[] mMVPMatrix = new float[16];
-    private float[] mScreenMVPMatrix = new float[16];
+    private final float[] mModelMatrix = new float[16];
+    private final float[] mViewMatrix = new float[16];
+    private final float[] mProjMatrix = new float[16];
+    private final float[] mMVPMatrix = new float[16];
+    private final float[] mScreenMVPMatrix = new float[16];
 
-    private float[] mTexMatrix = new float[16];
+    private final float[] mTexMatrix = new float[16];
 
-    private FloatBuffer mVertexBuffer;
-    private ShortBuffer mDrawListBuffer;
-    private FloatBuffer mTexCoordBuffer;
+    private final FloatBuffer mVertexBuffer;
+    private final ShortBuffer mDrawListBuffer;
+    private final FloatBuffer mTexCoordBuffer;
 
     private IProgram mBlurProgram;
     private IProgram mCopyProgram;
@@ -177,7 +178,7 @@ public class ScreenBlurRenderer implements IRenderer<DrawFunctor.GLInfo> {
                 if (!ret) {
                     return;
                 }
-                ret = upscaleWithMixColor(mScreenMVPMatrix, mTexMatrix);
+                upscaleWithMixColor(mScreenMVPMatrix, mTexMatrix);
             }
         } finally {
             onPostBlur();
@@ -503,7 +504,6 @@ public class ScreenBlurRenderer implements IRenderer<DrawFunctor.GLInfo> {
         public Builder radius(int radius) {
             this.radius = radius;
             return this;
-
         }
 
         public Builder sampleFactor(float sampleFactor) {

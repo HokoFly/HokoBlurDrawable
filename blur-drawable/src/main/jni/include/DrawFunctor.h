@@ -22,7 +22,6 @@ namespace android {
 
     private:
         void operate(int mode, void *info);
-
     };
 
 }

@@ -13,7 +13,7 @@ import androidx.annotation.ColorInt;
 
 import com.hoko.blur.anno.Mode;
 import com.hoko.blur.opengl.functor.DrawFunctor;
-import com.hoko.blur.opengl.functor.ScreenBlurRenderer;
+import com.hoko.blur.opengl.renderer.ScreenBlurRenderer;
 import com.hoko.blur.util.Preconditions;
 
 /**

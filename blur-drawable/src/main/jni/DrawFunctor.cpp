@@ -24,8 +24,7 @@ void DrawFunctor::operate(int mode, void *info) {
 
 }
 
-DrawFunctor::DrawFunctor() {
-}
+DrawFunctor::DrawFunctor() = default;
 
 DrawFunctor::~DrawFunctor() {
     ScopeJEnv scope_jenv(g_VM);

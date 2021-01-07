@@ -15,9 +15,9 @@ public abstract class CachePool<K, V> {
 
     private static final int MAX_SIZE = 1024;
 
-    private int mMaxSize;
+    private final int mMaxSize;
 
-    private List<V> mInternalCache;
+    private final List<V> mInternalCache;
 
     public CachePool() {
         this(MAX_SIZE);

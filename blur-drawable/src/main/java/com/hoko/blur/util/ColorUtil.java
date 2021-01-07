@@ -17,7 +17,5 @@ public class ColorUtil {
                 b / 255f,
                 a / 255f
         };
-
-
     }
 }

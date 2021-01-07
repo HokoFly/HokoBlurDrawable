@@ -12,9 +12,9 @@ public abstract class Texture implements ITexture {
 
     private int mTextureId;
 
-    private int mWidth;
+    private final int mWidth;
 
-    private int mHeight;
+    private final int mHeight;
 
     public Texture(int width, int height) {
         this.mWidth = width;

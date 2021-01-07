@@ -14,7 +14,7 @@ jclass mFunctorClazz;
 jclass mGlInfoClazz;
 
 static void __DetachCurrentThread(void *a) {
-    if (NULL != g_VM) {
+    if (nullptr != g_VM) {
         g_VM->DetachCurrentThread();
     }
 }
@@ -67,8 +67,8 @@ void postEventFromNativeC(int mode, void *info, jobject functor) {
 }
 
 jobject *copyGlInfo(jobject *j_info, DrawGlInfo *c_info) {
-    if (j_info == NULL || c_info == NULL) {
-        return NULL;
+    if (j_info == nullptr || c_info == nullptr) {
+        return nullptr;
     }
 
     ScopeJEnv scope_jenv(g_VM);
@@ -101,9 +101,9 @@ jobject *copyGlInfo(jobject *j_info, DrawGlInfo *c_info) {
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     g_VM = vm;
-    JNIEnv *env = NULL;
-    jclass functorCls = NULL;
-    jclass glInfoCls = NULL;
+    JNIEnv *env = nullptr;
+    jclass functorCls = nullptr;
+    jclass glInfoCls = nullptr;
     if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) != JNI_OK) {
         return JNI_ERR;
     }
@@ -116,7 +116,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     functorCls = env->FindClass("com/hoko/blur/opengl/functor/DrawFunctor");
     glInfoCls = env->FindClass("com/hoko/blur/opengl/functor/DrawFunctor$GLInfo");
 
-    if (functorCls == NULL || glInfoCls == NULL) {
+    if (functorCls == nullptr || glInfoCls == nullptr) {
         return JNI_ERR;
     }
     // cache global reference
@@ -130,22 +130,22 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 
 JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *vm, void *reserved) {
-    JNIEnv *env = NULL;
+    JNIEnv *env = nullptr;
 
     if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) != JNI_OK) {
         //LOGE("GetEnv failed!");
         return;
     }
 
-    if (mFunctorClazz != NULL && env != NULL) {
+    if (mFunctorClazz != nullptr && env != nullptr) {
         env->DeleteGlobalRef(mFunctorClazz);
-        mFunctorClazz = NULL;
+        mFunctorClazz = nullptr;
     }
-    if (mGlInfoClazz != NULL && env != NULL) {
+    if (mGlInfoClazz != nullptr && env != nullptr) {
         env->DeleteGlobalRef(mGlInfoClazz);
-        mGlInfoClazz = NULL;
+        mGlInfoClazz = nullptr;
     }
 
-    g_VM = NULL;
+    g_VM = nullptr;
 
 }

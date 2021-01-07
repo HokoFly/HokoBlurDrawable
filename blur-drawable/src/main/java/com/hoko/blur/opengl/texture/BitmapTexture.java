@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 
 public class BitmapTexture extends Texture {
 
-    private WeakReference<Bitmap> mBitmapWeakRef;
+    private final WeakReference<Bitmap> mBitmapWeakRef;
 
     BitmapTexture(Bitmap bitmap) {
         super(bitmap.getWidth(), bitmap.getHeight());
