@@ -71,15 +71,6 @@ animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
 
 
-### 3. Proguard
-In order to make Hoko blur work normally, you need to add the following rules when using proguard:
-
-```java
--keep class com.hoko.blur.opengl.functor.** { *; }
-
-```
-
-
 
 
 
@@ -153,13 +144,4 @@ gif图较大，稍等片刻
 
 <img src="doc/graphic/blur_drawable.gif" width = "370" alt="动态模糊" />
 
-
-
-### 3. 配置
-动态模糊正常工作，需要在混淆时加入下面的规则：
-
-```java
--keep class com.hoko.blur.opengl.functor.** { *; }
-
-```
 
