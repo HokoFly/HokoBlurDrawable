@@ -216,7 +216,6 @@ public class ScreenBlurRenderer implements IRenderer<DrawFunctor.GLInfo> {
             mNeedRelink = false;
         }
 
-
         if (mBlurProgram.id() == 0 || mCopyProgram.id() == 0) {
             return false;
         }

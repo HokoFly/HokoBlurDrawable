@@ -32,6 +32,8 @@ public class DrawFunctor {
 
     private GLInfo mParentGLInfo;
 
+    private volatile boolean mOnlyDirtyRegion = true;
+
     private static boolean LIB_LOADED;
 
     public DrawFunctor(DrawLocationObserver observer) {
@@ -114,7 +116,7 @@ public class DrawFunctor {
 //        Log.i("DrawFunctor", "onDraw: " + info);
         boolean isChildRedraw;
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT
-                && mParentGLInfo != null && mParentGLInfo.contains(info)) {
+                && mParentGLInfo != null && mParentGLInfo.contains(info) && !mOnlyDirtyRegion) {
             isChildRedraw = true;
         } else {
             mParentGLInfo = info;
@@ -124,6 +126,10 @@ public class DrawFunctor {
         if (mObserver != null) {
             mObserver.onLocated(mParentGLInfo, isChildRedraw);
         }
+    }
+
+    public void onlyDirtyRegion(boolean onlyDirtyRegion) {
+        mOnlyDirtyRegion = onlyDirtyRegion;
     }
 
     @Override

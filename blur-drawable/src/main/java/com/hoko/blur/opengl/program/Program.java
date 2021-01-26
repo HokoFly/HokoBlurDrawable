@@ -43,7 +43,6 @@ public class Program implements IProgram {
                     GLES20.glDeleteProgram(id);
                     id = 0;
                 }
-//
             }
         } finally {
             GLES20.glDetachShader(id, vertexShader);

@@ -24,15 +24,6 @@ public class BlurDrawable extends Drawable {
     public static final int MODE_GAUSSIAN = 1;
     public static final int MODE_STACK = 2;
 
-    public static final int SCHEME_RENDER_SCRIPT = 1001;
-    public static final int SCHEME_OPENGL = 1002;
-    public static final int SCHEME_NATIVE = 1003;
-    public static final int SCHEME_JAVA = 1004;
-
-    public static final int HORIZONTAL = 0;
-    public static final int VERTICAL = 1;
-    public static final int BOTH = 2;
-
     private DrawFunctor mDrawFunctor;
 
     private ScreenBlurRenderer mBlurRenderer;
@@ -74,9 +65,6 @@ public class BlurDrawable extends Drawable {
         }
     }
 
-    /**
-     * todo setting Alpha is invalid
-     */
     @Override
     @Deprecated
     public void setAlpha(int alpha) {
@@ -84,12 +72,9 @@ public class BlurDrawable extends Drawable {
         invalidateOnMainThread();
     }
 
-    /**
-     * todo setting ColorFilter is invalid
-     */
     @Override
     public void setColorFilter(ColorFilter colorFilter) {
-        // TODO: 2017/1/25  
+        // setting ColorFilter is invalid
     }
 
     @Override
@@ -147,6 +132,10 @@ public class BlurDrawable extends Drawable {
         invalidateOnMainThread();
     }
 
+    public void onlyDirtyRegion(boolean onlyDirtyRegion) {
+        mDrawFunctor.onlyDirtyRegion(onlyDirtyRegion);
+        invalidateOnMainThread();
+    }
 
     public int mode() {
         return mBlurRenderer.mode();
