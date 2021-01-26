@@ -53,7 +53,7 @@ ext {
 
     publishedGroupId = 'com.hoko'
     libraryName = 'HokoBlurDrawable'
-    artifact = 'hoko-blur-drawable'
+    artifact = 'blur-drawable'
 
     libraryDescription = 'HokoBlurDrawable is an Android component which provides dynamic blur effect.'
 

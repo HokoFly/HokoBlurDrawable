@@ -22,7 +22,7 @@ Dynamic Blur provides real-time background blurring of View and ViewGroup, not f
 Add dependency
 
 ```groovy
-implementation 'com.hoko:hoko-blur-drawable:0.0.1'
+implementation 'com.hoko:blur-drawable:0.0.1'
 ```
 
 
@@ -104,7 +104,7 @@ animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 添加依赖
 
 ```groovy
-implementation 'com.hoko:hoko-blur-drawable:0.0.1'
+implementation 'com.hoko:blur-drawable:0.0.1'
 ```
 
 为View添加背景模糊，只需要将BlurDrawable设置为View背景即可。
