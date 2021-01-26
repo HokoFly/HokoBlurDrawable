@@ -44,5 +44,31 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
 }
+
+ext {
+    bintrayRepo = 'Hoko'
+    bintrayName = 'HokoBlurDrawable'
+
+    publishedGroupId = 'com.hoko'
+    libraryName = 'HokoBlurDrawable'
+    artifact = 'hoko-blur-drawable'
+
+    libraryDescription = 'HokoBlurDrawable is an Android component which provides dynamic blur effect.'
+
+    siteUrl = 'https://github.com/HokoFly/HokoBlurDrawable'
+    gitUrl = 'https://github.com/HokoFly/HokoBlurDrawable.git'
+
+    libraryVersion = HOKO_BLUR_DRAWABLE_VERSION
+
+    developerId = 'HokoFly'
+    developerName = 'HokoFly'
+    developerEmail = 'yuxfzju@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: rootProject.file('gradle/bintray.gradle')

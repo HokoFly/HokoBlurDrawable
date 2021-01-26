@@ -19,6 +19,13 @@ HokoBlurDrawable is an Android component which provides dynamic blur effect.
 
 Dynamic Blur provides real-time background blurring of View and ViewGroup, not for Bitmap implementations. The component will blur the area where the View is located.
 
+Add dependency
+
+```groovy
+implementation 'com.hoko:hoko-blur-drawable:0.0.1'
+```
+
+
 To add background blur to the View, just set the BlurDrawable to the View background.
 
 ```java
@@ -93,6 +100,12 @@ animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 ### 2. 动态模糊
 
 动态模糊提供了对View以及ViewGroup的实时背景模糊，并不是针对Bitmap的实现。组件将会对View所在区域进行模糊。
+
+添加依赖
+
+```groovy
+implementation 'com.hoko:hoko-blur-drawable:0.0.1'
+```
 
 为View添加背景模糊，只需要将BlurDrawable设置为View背景即可。
 
