@@ -1,8 +1,13 @@
+
+
+
+
 ## HokoBlurDrawable
 
 
 HokoBlurDrawable is an Android component which provides dynamic blur effect.
 
+### 💡 Due to compatibility issues and the inability to address external clipping and other rendering problems, the chosen implementation approach for this project has proven to be ineffective in subsequent system versions. As a result, this project will no longer be maintained. Thank you all for your attention and support. 💡
 
 
 ### 1. Introductions
